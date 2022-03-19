@@ -1,1 +1,1 @@
-web: python3 Bijukabot.py
+worker: python3 Bijukabot.py
