@@ -44,13 +44,14 @@ def helpline(update, context):
     "displays farmers helpline numbers"
     update.message.reply_text('9998887623 9988776655')
 
-# def Image(update, context):
-#     update.message.photo[-1].get_file()
-#     img = cv2.imread("img.jpg")
-#     img = cv2.resize(img, (224,224))
-#     img = cv2.reshape(img, (1,224,224,3))
-#     # pred = np.argumax(model.predict(img))
-#     # pred = np.argmax(model.predict(img))
+def Image(update, context):
+    update.message.photo[-1].get_file()
+    img = cv2.imread("img.jpg")
+    img = cv2.resize(img, (224,224))
+    img = cv2.reshape(img, (1,224,224,3))
+    update.message.reply_text('The disease is Brownspot')
+    # pred = np.argumax(model.predict(img))
+    # pred = np.argmax(model.predict(img))
 
 def echo(update, context):
     """Echo the user message."""
@@ -78,7 +79,7 @@ def main():
     dp.add_handler(CommandHandler("English",English))
     dp.add_handler(CommandHandler("Hindi",Hindi))
     dp.add_handler(CommandHandler("Punjabi",Punjabi))
-    # dp.add_handler(CommandHandler("Image",Image))
+    dp.add_handler(CommandHandler("Image",Image))
 
     # on noncommand i.e message - echo the message on Telegram
     dp.add_handler(MessageHandler(Filters.text, echo))
