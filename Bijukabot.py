@@ -25,15 +25,20 @@ trendBackNavigation = InlineKeyboardMarkup([[InlineKeyboardButton(
 def start(update, context):
     """Send a message when the command /start is issued."""
     update.message.reply_text('Hi!')
-    update.message.reply_text('go to \help for commands list')
+    update.message.reply_text('go to /help for commands list')
 
 def help(update, context):
     """Send a message when the command /help is issued."""
-    update.message.reply_text('\start' )
+    update.message.reply_text('/start \n/help\n/helpline' )
+    
+def helpline(update, context):
+    "displays farmers helpline numbers"
+    update.message.reply_text('9998887623 9988776655')
 
 def echo(update, context):
     """Echo the user message."""
     update.message.reply_text(update.message.text)
+
 
 def error(update, context):
     """Log Errors caused by Updates."""
