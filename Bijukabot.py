@@ -7,7 +7,7 @@ import logging
 from telegram import InlineKeyboardButton, InlineKeyboardMarkup, Update, ReplyKeyboardMarkup
 from telegram.ext import Updater, CommandHandler, MessageHandler, Filters, CallbackQueryHandler, CallbackContext
 import requests
-# import cv2
+import cv2
 
 # Enable logging
 logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
@@ -25,7 +25,7 @@ trendBackNavigation = InlineKeyboardMarkup([[InlineKeyboardButton(
 # context. Error handlers also receive the raised TelegramError object in error.
 def Start(update, context):
     """Send a message when the command /start is issued."""
-    update.message.reply_text('Hi! Welcome to Bijuka. Please select you language. Enter /English for English, /Hindi for Hindi and /Punjabi for Punjabi.\n\nनमस्ते! बीजूका में आपका स्वागत है। कृपया अपनी भाषा चुनें। अंग्रेजी के लिए /English, हिंदी के लिए /Hindi और पंजाबी के लिए /Punjabi दर्ज करें।\n\nਹੈਲੋ! ਬੀਜੂਕਾ ਵਿੱਚ ਤੁਹਾਡਾ ਸੁਆਗਤ ਹੈ। ਕਿਰਪਾ ਕਰਕੇ ਆਪਣੀ ਭਾਸ਼ਾ ਚੁਣੋ। ਅੰਗਰੇਜ਼ੀ ਲਈ /English, /Hindi ਲਈ ਹਿੰਦੀ ਅਤੇ ਪੰਜਾਬੀ ਲਈ /Punjabi ਦਰਜ ਕਰੋ।')
+    update.message.reply_text('Hi! Welcome to Bijuka. Please select you language. Enter /English for English, /Hindi for Hindi and /Punjabi for Punjabi.\n\nनमस्ते! बीजूका में आपका स्वागत है। कृपया अपनी भाषा चुनें। अंग्रेजी के लिए /English, हिंदी के लिए /Hindi और पंजाबी के लिए /Punjabi दर्ज करें।\n\nਹੈਲੋ! ਬੀਜੂਕਾ ਵਿੱਚ ਤੁਹਾਡਾ ਸੁਆਗਤ ਹੈ। ਕਿਰਪਾ ਕਰਕੇ ਆਪਣੀ ਭਾਸ਼ਾ ਚੁਣੋ। ਅੰਗਰੇਜ਼ੀ ਲਈ /English, /Hindi ਲਈ ਹਿੰਦੀ ਅਤੇ ਪੰਜਾਬੀ ਲਈ /Punjabi ਦਰਜ ਕਰੋ।\n\n/help')
 
 def English(update, context):
     update.message.reply_text('Use /Image command to identify the disease your rice crop has so that you can do the applicable treatment for you crop. Enter /Image and then enter the picture of affected crop.')
@@ -43,6 +43,14 @@ def help(update, context):
 def helpline(update, context):
     "displays farmers helpline numbers"
     update.message.reply_text('9998887623 9988776655')
+
+def Image(update, context):
+    update.message.photo[-1].get_file()
+    img = cv2.imread("img.jpg")
+    img = cv2.resize(img, (224,224))
+    img = cv2.reshape(img, (1,224,224,3))
+    # pred = np.argumax(model.predict(img))
+    # pred = np.argmax(model.predict(img))
 
 def echo(update, context):
     """Echo the user message."""
@@ -70,6 +78,7 @@ def main():
     dp.add_handler(CommandHandler("English",English))
     dp.add_handler(CommandHandler("Hindi",Hindi))
     dp.add_handler(CommandHandler("Punjabi",Punjabi))
+    dp.add_handler(CommandHandler("Image",Image))
 
     # on noncommand i.e message - echo the message on Telegram
     dp.add_handler(MessageHandler(Filters.text, echo))
