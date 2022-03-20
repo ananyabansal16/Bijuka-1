@@ -40,9 +40,6 @@ def help(update, context):
     """Send a message when the command /help is issued."""
     update.message.reply_text('/start \n/help\n/helpline' )
     
-def helpline(update, context):
-    "displays farmers helpline numbers"
-    update.message.reply_text('9998887623 9988776655')
 
 def echo(update, context):
     """Echo the user message."""
@@ -66,7 +63,9 @@ def main():
     # on different commands - answer in Telegram
     dp.add_handler(CommandHandler("Start", Start))
     dp.add_handler(CommandHandler("help", help))
-    dp.add_handler(CommandHandler("helpline",helpline))
+    dp.add_handler(CommandHandler("English",English))
+    dp.add_handler(CommandHandler("Hindi",Hindi))
+    dp.add_handler(CommandHandler("Punjabi",Punjabi))
 
     # on noncommand i.e message - echo the message on Telegram
     dp.add_handler(MessageHandler(Filters.text, echo))
