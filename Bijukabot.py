@@ -50,14 +50,15 @@ def main():
 
     # log all errors
     dp.add_error_handler(error)
-
-if __name__ == '__main__':
-    main()
-    # Start the Bot
-    Updater.start_polling()
+    updater.start_polling()
     #updater.bot.setWebhook("https://bijuka.herokuapp.com/" + TOKEN)
 
     # Run the bot until you press Ctrl-C or the process receives SIGINT,
     # SIGTERM or SIGABRT. This should be used most of the time, since
     # start_polling() is non-blocking and will stop the bot gracefully.
-    Updater.idle()
+    updater.idle()
+
+if __name__ == '__main__':
+    main()
+    # Start the Bot
+   
