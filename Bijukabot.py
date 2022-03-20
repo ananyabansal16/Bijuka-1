@@ -7,6 +7,7 @@ import logging
 from telegram import InlineKeyboardButton, InlineKeyboardMarkup, Update, ReplyKeyboardMarkup
 from telegram.ext import Updater, CommandHandler, MessageHandler, Filters, CallbackQueryHandler, CallbackContext
 import requests
+import cv2
 
 # Enable logging
 logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
@@ -24,8 +25,8 @@ trendBackNavigation = InlineKeyboardMarkup([[InlineKeyboardButton(
 # context. Error handlers also receive the raised TelegramError object in error.
 def start(update, context):
     """Send a message when the command /start is issued."""
-    update.message.reply_text('Hi!')
-    update.message.reply_text('go to /help for commands list')
+    update.message.reply_text('Hi! Welcome to Bijuka. Please select you language. Enter /English for English, /Hindi for Hindi and /Punjabi for Punjabi.\n\nनमस्ते! बीजूका में आपका स्वागत है। कृपया अपनी भाषा चुनें। अंग्रेजी के लिए /English, हिंदी के लिए /Hindi और पंजाबी के लिए /Punjabi दर्ज करें।')
+
 
 def help(update, context):
     """Send a message when the command /help is issued."""
