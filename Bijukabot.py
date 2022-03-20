@@ -67,6 +67,9 @@ def main():
     dp.add_handler(CommandHandler("Start", Start))
     dp.add_handler(CommandHandler("help", help))
     dp.add_handler(CommandHandler("helpline",helpline))
+    dp.add_handler(CommandHandler("English",English))
+    dp.add_handler(CommandHandler("Hindi",Hindi))
+    dp.add_handler(CommandHandler("Punjabi",Punjabi))
 
     # on noncommand i.e message - echo the message on Telegram
     dp.add_handler(MessageHandler(Filters.text, echo))
