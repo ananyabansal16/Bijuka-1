@@ -5,6 +5,7 @@ Source: https://github.com/python-telegram-bot/python-telegram-bot/blob/master/e
 
 import logging
 from telegram.ext import Updater, CommandHandler, MessageHandler, Filters
+import cv3
 
 # Enable logging
 logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
@@ -27,6 +28,10 @@ def echo(update, context):
     """Echo the user message."""
     update.message.reply_text(update.message.text)
 
+def image(update, context):
+    update.message.photo[-1].get_file().download("img.jpg")
+
+    image cv3.imread()
 def error(update, context):
     """Log Errors caused by Updates."""
     logger.warning('Update "%s" caused error "%s"', update, context.error)
