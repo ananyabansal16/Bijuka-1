@@ -7,7 +7,7 @@ import logging
 from telegram import InlineKeyboardButton, InlineKeyboardMarkup, Update, ReplyKeyboardMarkup
 from telegram.ext import Updater, CommandHandler, MessageHandler, Filters, CallbackQueryHandler, CallbackContext
 import requests
-# import cv2
+import cv2
 
 # Enable logging
 logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
@@ -38,7 +38,7 @@ def Punjabi(update, context):
 
 def help(update, context):
     """Send a message when the command /help is issued."""
-    update.message.reply_text('/start \n/help\n/helpline' )
+    update.message.reply_text('/start \n/help\n/helpline\n/English\n/Hindi\n/Punjabi\n/Image' )
     
 def helpline(update, context):
     "displays farmers helpline numbers"
