@@ -23,10 +23,18 @@ trendBackNavigation = InlineKeyboardMarkup([[InlineKeyboardButton(
 
 # Define a few command handlers. These usually take the two arguments update and
 # context. Error handlers also receive the raised TelegramError object in error.
-def start(update, context):
+def Start(update, context):
     """Send a message when the command /start is issued."""
-    update.message.reply_text('Hi! Welcome to Bijuka. Please select you language. Enter /English for English, /Hindi for Hindi and /Punjabi for Punjabi.\n\nनमस्ते! बीजूका में आपका स्वागत है। कृपया अपनी भाषा चुनें। अंग्रेजी के लिए /English, हिंदी के लिए /Hindi और पंजाबी के लिए /Punjabi दर्ज करें।')
+    update.message.reply_text('Hi! Welcome to Bijuka. Please select you language. Enter /English for English, /Hindi for Hindi and /Punjabi for Punjabi.\n\nनमस्ते! बीजूका में आपका स्वागत है। कृपया अपनी भाषा चुनें। अंग्रेजी के लिए /English, हिंदी के लिए /Hindi और पंजाबी के लिए /Punjabi दर्ज करें।\n\nਹੈਲੋ! ਬੀਜੂਕਾ ਵਿੱਚ ਤੁਹਾਡਾ ਸੁਆਗਤ ਹੈ। ਕਿਰਪਾ ਕਰਕੇ ਆਪਣੀ ਭਾਸ਼ਾ ਚੁਣੋ। ਅੰਗਰੇਜ਼ੀ ਲਈ /English, /Hindi ਲਈ ਹਿੰਦੀ ਅਤੇ ਪੰਜਾਬੀ ਲਈ /Punjabi ਦਰਜ ਕਰੋ।')
 
+def English(update, context):
+    update.message.reply_text('Use /Image command to identify the disease your rice crop has so that you can do the applicable treatment for you crop. Enter /Image and then enter the picture of affected crop.')
+
+def Hindi(update, context):
+    update.message.reply_text('अपनी धान की फसल में रोग की पहचान करने के लिए /Image कमांड का प्रयोग करें ताकि आप अपनी फसल के लिए उपयुक्त उपचार कर सकें। /Image दर्ज करें और फिर प्रभावित फसल की तस्वीर दर्ज करें।')
+
+def Punjabi(update, context):
+    update.message.reply_text('ਤੁਹਾਡੀ ਚੌਲਾਂ ਦੀ ਫਸਲ ਨੂੰ ਬਿਮਾਰੀ ਦੀ ਪਛਾਣ ਕਰਨ ਲਈ /Image ਕਮਾਂਡ ਦੀ ਵਰਤੋਂ ਕਰੋ ਤਾਂ ਜੋ ਤੁਸੀਂ ਆਪਣੀ ਫਸਲ ਲਈ ਲਾਗੂ ਇਲਾਜ ਕਰ ਸਕੋ। /Image ਦਰਜ ਕਰੋ ਅਤੇ ਫਿਰ ਪ੍ਰਭਾਵਿਤ ਫਸਲ ਦੀ ਤਸਵੀਰ ਦਰਜ ਕਰੋ।')
 
 def help(update, context):
     """Send a message when the command /help is issued."""
@@ -56,7 +64,7 @@ def main():
     dp = updater.dispatcher
 
     # on different commands - answer in Telegram
-    dp.add_handler(CommandHandler("start", start))
+    dp.add_handler(CommandHandler("Start", Start))
     dp.add_handler(CommandHandler("help", help))
     dp.add_handler(CommandHandler("helpline",helpline))
 
