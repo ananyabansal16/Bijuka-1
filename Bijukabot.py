@@ -49,7 +49,7 @@ def Image(update, context):
     img = cv2.imread("img.jpg")
     img = cv2.resize(img, (224,224))
     img = cv2.reshape(img, (1,224,224,3))
-    update.message.reply_text('The disease is Brownspot')
+    update.message.reply_text('The disease is Brownspot \n')
     # pred = np.argumax(model.predict(img))
     # pred = np.argmax(model.predict(img))
 
