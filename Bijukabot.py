@@ -4,7 +4,9 @@ Source: https://github.com/python-telegram-bot/python-telegram-bot/blob/master/e
 """
 
 import logging
-from telegram.ext import Updater, CommandHandler, MessageHandler, Filters
+from telegram import InlineKeyboardButton, InlineKeyboardMarkup, Update, ReplyKeyboardMarkup
+from telegram.ext import Updater, CommandHandler, MessageHandler, Filters, CallbackQueryHandler, CallbackContext
+import requests
 
 # Enable logging
 logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
@@ -13,15 +15,21 @@ logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s
 logger = logging.getLogger(__name__)
 TOKEN = '5171667370:AAFaN1oDzj1qotI-XCsD4kw7ISOGo-HCssE'
 
+latestBackNavigation = InlineKeyboardMarkup([[InlineKeyboardButton(
+    "« Back", callback_data='latest'), InlineKeyboardButton("✗ Exit", callback_data='exit')]])
+trendBackNavigation = InlineKeyboardMarkup([[InlineKeyboardButton(
+    "« Back", callback_data='trend'), InlineKeyboardButton("✗ Exit", callback_data='exit')]])
+
 # Define a few command handlers. These usually take the two arguments update and
 # context. Error handlers also receive the raised TelegramError object in error.
 def start(update, context):
     """Send a message when the command /start is issued."""
     update.message.reply_text('Hi!')
+    update.message.reply_text('go to \help for commands list')
 
 def help(update, context):
     """Send a message when the command /help is issued."""
-    update.message.reply_text('Help!')
+    update.message.reply_text('\start' )
 
 def echo(update, context):
     """Echo the user message."""
